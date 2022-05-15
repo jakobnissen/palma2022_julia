@@ -1,15 +1,19 @@
 module Kmers
 
-data = [rand(UInt8.(collect("ACGT")), 10000) for i in 1:1000]
-matrix = zeros(UInt32, 256, length(data))
+# Make 1000 sequences of length 25,000
+data = [rand(UInt8.(collect("ACGT")), 25_000) for i in 1:1000]
 
-const LUT = fill(0xff, 256)
-LUT[UInt8('A') + 1] = 0
-LUT[UInt8('C') + 1] = 1
-LUT[UInt8('G') + 1] = 2
-LUT[UInt8('T') + 1] = 3
+# Make a Look Up Table to get the binary representation of each nucleotide
+const LUT = let
+    lut = fill(0xff, 256)
+    for (i, char) in enumerate("ACGT")
+        lut[UInt8(char) + 1] = i - 1
+    end
+    Tuple(lut)
+end
 
-encode(dna, i) = @inbounds LUT[dna[i] + 0x01]
+# Fill i'th column of matrix with kmer counts from dna_bytes
+encode(dna, i) = @inbounds LUT[dna[i] + 1]
 function count_kmers!(matrix, index, dna_bytes) 
     kmer = (
         (encode(dna_bytes, 1) << 4) |
@@ -20,17 +24,17 @@ function count_kmers!(matrix, index, dna_bytes)
         kmer = (kmer << 2) | encode(dna_bytes, i)
         @inbounds matrix[kmer + 1, index] += 0x01
     end
-    matrix
 end
 
 function count_matrix(data, matrix)
-    fill!(matrix, zero(eltype(matrix)))
+    fill!(matrix, zero(eltype(matrix))) # Reset matrix
     for (i, dna_bytes) in enumerate(data)
         count_kmers!(matrix, i, dna_bytes)
     end
     matrix
 end
 
+matrix = zeros(Int32, 256, length(data))
 x = count_matrix(data, matrix)
 
 end # module

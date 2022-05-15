@@ -1,17 +1,22 @@
 import random
+import time
 
+start_time = time.time()
+
+# Make 1000 sequences of length 25,000
 data = [
     bytearray(random.choices([ord(i) for i in "ACGT"],
-    k=10000)) for i in range(1000)
+    k=25_000)) for i in range(1000)
 ]
-matrix = [[0 for i in range(256)] for j in range(len(data))]
 
+# Make a Look Up Table to get the binary representation of each nucleotide
 LUT = [255 for i in range(256)]
-LUT[ord('A')] = 0
-LUT[ord('C')] = 1
-LUT[ord('G')] = 2
-LUT[ord('T')] = 3
+for (i, char) in enumerate("ACGT"):
+    LUT[ord(char)] = i
 
+calc_data_time = time.time()
+
+# Fill counts with kmer counts from dna_bytes
 def count_kmers(counts, dna_bytes):
     kmer = (
         (LUT[dna_bytes[0]] << 4) |
@@ -23,6 +28,7 @@ def count_kmers(counts, dna_bytes):
         counts[kmer] += 1
 
 def count_matrix(data, matrix):
+    # Reset matrix
     for i in matrix:
         for j in range(len(i)):
             i[j] = 0
@@ -31,4 +37,10 @@ def count_matrix(data, matrix):
 
     return matrix
 
+matrix = [[0 for i in range(256)] for j in range(len(data))]
 x = count_matrix(data, matrix)
+final_time = time.time()
+
+print(f"Preparation time: {calc_data_time - start_time:.2f} seconds")
+print(f"Count kmer time:  {final_time - calc_data_time:.2f} seconds")
+print(f"Total time:       {final_time - start_time:.2f} seconds")
