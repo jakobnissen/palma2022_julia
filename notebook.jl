@@ -81,7 +81,7 @@ The good news is that as long as the Julia process remains alive, the compiled c
 From the same directory, open an interactive Julia REPL:
 
 ```bash
-$ julia
+$ julia --project=.
 ```
 
 Now load in the code from the file:
@@ -122,6 +122,7 @@ Time Julia the following ways:
 * From REPL using the `BenchmarkTools` package (discarding latency):
 ```julia-repl
 julia> include("kmers.jl")
+Main.Kmers
 
 julia> using BenchmarkTools
 
@@ -259,7 +260,7 @@ For example, suppose we want to, for some objects, have the ability to create a 
 """
 
 # ╔═╡ 2c58bddd-adf6-42fa-a141-9b7a735b4b47
-begin # this 'begin' block is only necessary in Pluto, not in Julia in general
+begin # 'begin' blocks are necessary in Pluto notebooks, not in Julia in general
 	default(x::Number) = zero(x)
 	default(::Char) = 'X'
 	default(::Vector{T}) where T = Vector{T}()
@@ -276,7 +277,7 @@ end
 
 # ╔═╡ 9bfdb192-ccff-4175-ae16-11fd1638fde0
 md"""
-Try to define a new `default` method for the type `Int`. It should return `1`.
+Try to define a new `default` method for the type `Int`. It should return `1`. You can test it by making a new cell with the content `default(0)` and see what it returns.
 """
 
 # ╔═╡ fcaeef3f-06a7-45ed-a8d2-c295864a1fa9
@@ -310,7 +311,7 @@ In order to provide type checking, you need to annotate all the top-level data a
 
 If you _also_ want the code to be analysable for generic, duck-typing use, you need to match each argument with the [abstract base classes](https://docs.python.org/3/library/collections.abc.html) that correctly cover the methods of the object in the function called.
 
-You don't have the time to do this today, but it's left as an exercise for the reader.
+This is tricky, and you don't have the time to do this today. But even in Python it's definitely worth it to use static type hints, and it's left as an exercise for the reader.
 """
 
 # ╔═╡ d578a599-9f0d-4acb-aa4d-313074a12a80
@@ -353,7 +354,6 @@ end;
 data = [rand(Int32, 10_000_000) for i in 1:8];
 
 # ╔═╡ 00bc8f70-7ebe-464a-b229-86d11bf7041b
-# ╠═╡ show_logs = false
 @time sum_vectors_singlethreaded(data)
 
 # ╔═╡ d41fc671-3809-48f2-aad6-e1353aef695f
