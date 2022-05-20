@@ -49,7 +49,7 @@ Open your terminal and navigate to the directory of this exercise.
 
 Open and inspect the file `latency_test_1.jl`.
 Note the syntax is quite similar to Python, though with some minor differences:
-* In Python, modules are defined by the files they are in. In Julia, modules are explcitly created with the `module` keyword, allowing modules accross multiple files, or multiple modules in one file.
+* In Python, modules are defined by the files they are in. In Julia, modules are explicitly created with the `module` keyword, allowing modules accross multiple files, or multiple modules in one file.
 * `using MyPackage` in Julia is similar to `from MyPackage import *` in Python
 * `print` in Julia does not add a newline automatically like in Python, but `println` does, so that is used instead.
 * The curly brackets `{ }` in e.g. `LongRNA{2}` designates _type parameters_ of generic types (where Python uses square brackets `[ ]`). Don't worry about it for now.
@@ -106,7 +106,7 @@ md"""
 ## Strength: Speed
 This is probably the most easil noticable advantage of Julia over Python.
 
-Whenever you are running Python code, you are actually running much more C code than Python code. Not only are the core computational code of e.g. Numpy and PyTorch written in C, all of Python are also written in C for speed reasons. In contrast, most of Julia is written in Julia.
+Whenever you are running Python code, you are actually running much more C code than Python code. Not only are the core computational code of e.g. Numpy and PyTorch written in C, much of Python itself is also written in C for speed reasons. In contrast, most of Julia is written in Julia.
 
 Julia is around 100-1000 times faster than Python, and around 1-2 times slower than C. Hence the speed advantage over Python depends on how much of the "Python" heavy lifting that happens inside C functions.
 """
@@ -186,7 +186,7 @@ Julia is from the 2010's, where package management is seen as a basic property o
 # ╔═╡ e0a41812-064f-45a4-b681-bfd287cde692
 md"""
 #### Exercise: Create new Julia project
-Making Julia environments is easy enough that you should just create one for every small project you work on. This enables full reproducibility of your code.
+Making Julia environments is easy enough that you should just create one for every small project you work on. This helps with reproducibility of your code.
 
 In this exercise, you will create a new project (i.e. environment).
 
@@ -288,7 +288,7 @@ One major advantage of type systems is that they allow computer programs to dete
 
 In contrast, the Julia type checker `JET` is integrated into Julia's compiler, so it sees what the compiler sees. For that reason, it works for all code that is statically analyzable at all.
 
-For this exercise, statically analyse the Julia and Python codes in `kmers.jl` and `kmers.py`.
+For this exercise, statically analyse a Julia function call.
 
 __Julia__
 
