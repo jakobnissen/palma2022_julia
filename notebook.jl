@@ -248,13 +248,13 @@ Type systems (both Python's and Julia's) are inherently complex and heavy with t
 
 # ╔═╡ a43340c8-087f-4220-8bc7-b9fc229909bd
 md"""
-#### Exercise: Multiple dispatch
+#### Exercise: Julia's dispatch
 
 _Dispatch_ refers to the ability to have multiple definitions of the same function that applies to different types. I.e. in Python `a + b` means different things depending on if `a` is a `list`, a `str`, a `float` or an `int`.
 
-Different versions of functions are called `methods`. In Python, dispatch is (nearly) always controlled by the _first_ argument to a function call (i.e. _single dispatch_), and works via _dunder methods_, that is, methods that begin and end with double underscore, like `__add__`, `__mul__` or `__hash__`. In my **entirely** unbiased opinion, It's a mess.
+Different versions of functions are called `methods`. In Python, dispatch is (nearly) always controlled by the _first_ argument to a function call (i.e. _single dispatch_), and works via _dunder methods_, that is, methods that begin and end with double underscore, like `__add__`, `__mul__` or `__hash__` that go inside the class of the first argument. In my **entirely** unbiased opinion, It's a mess. For example, try to look up the dunder method `__radd__` and tell my why it's needed.
 
-In Julia, _multiple dispatch_ allows you to directly write multiple functions for different types.
+In Julia, its _multiple dispatch_ allows you to directly write multiple functions for different types. You just define them as ordinary functions whereever you want, with whatever types you want, then the compiler takes care of dispatch for you.
 
 For example, suppose we want to, for some objects, have the ability to create a _default object_ of the same type - but we don't know beforehand for what types we might need to do this. This is extremely awkward (perhaps even impossible?) in Python due to how its dispatch works. However, in Julia, we can easily define 4 methods for the same function
 """
@@ -377,21 +377,6 @@ There are many more differences between Python and Julia than covered here. A fe
 * Visit the [JuliaLang Slack workspace](https://julialang.org/slack/) or the [Discourse forum](discourse.julialang.org/).
 """
 
-# ╔═╡ 00000000-0000-0000-0000-000000000001
-PLUTO_PROJECT_TOML_CONTENTS = """
-[deps]
-"""
-
-# ╔═╡ 00000000-0000-0000-0000-000000000002
-PLUTO_MANIFEST_TOML_CONTENTS = """
-# This file is machine-generated - editing it directly is not advised
-
-julia_version = "1.7.2"
-manifest_format = "2.0"
-
-[deps]
-"""
-
 # ╔═╡ Cell order:
 # ╟─044c0c96-d355-11ec-25de-37d5f5e9e12c
 # ╟─683d19e4-adc0-4173-bf3c-ddf2048b34aa
@@ -414,5 +399,3 @@ manifest_format = "2.0"
 # ╠═24e4ad19-1681-4df7-8725-217da110454a
 # ╠═00bc8f70-7ebe-464a-b229-86d11bf7041b
 # ╟─d41fc671-3809-48f2-aad6-e1353aef695f
-# ╟─00000000-0000-0000-0000-000000000001
-# ╟─00000000-0000-0000-0000-000000000002
