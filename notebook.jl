@@ -104,11 +104,11 @@ Keeping the REPL open, try modifying the script, e.g. by formatting another Juli
 # ╔═╡ 1f7ced75-cee2-42a6-82f1-4e870e65b423
 md"""
 ## Strength: Speed
-This is probably the most easil noticable advantage of Julia over Python.
+This is probably the most easily noticable advantage of Julia over Python.
 
 Whenever you are running Python code, you are actually running much more C code than Python code. Not only are the core computational code of e.g. Numpy and PyTorch written in C, much of Python itself is also written in C for speed reasons. In contrast, most of Julia is written in Julia.
 
-Julia is around 100-1000 times faster than Python, and around 1-2 times slower than C. Hence the speed advantage over Python depends on how much of the "Python" heavy lifting that happens inside C functions.
+Julia is around 100 times faster than Python, and around 1-2 times slower than C. Hence the speed advantage over Python depends on how much of the "Python" heavy lifting that happens inside C functions. If all you do in Python is call a C function, Julia is no faster. If you try to do low-level coding in Python, Julia will be tens of times faster.
 """
 
 # ╔═╡ a71fc3ae-469f-4059-b2fc-06c200463a86
@@ -131,8 +131,10 @@ julia> @benchmark Kmers.count_matrix(Kmers.data, Kmers.matrix)
 
 The `@benchmark` macro will run the code many times to get an estimate of the time spent.
 
-Python is a little more tricky to benchmark, so I put in timers in the code. To time it, simply run the script from command line:
-* `python kmers.py`
+Python has neglible compilation overhead, so you can estimate the time spent by simply calling it from command line:
+```
+$ time python kmers.py
+```
 
 How many times faster is Julia than Python for this task when including or discounting startup latency, respectively?
 """
@@ -277,7 +279,7 @@ end
 
 # ╔═╡ 9bfdb192-ccff-4175-ae16-11fd1638fde0
 md"""
-Try to define a new `default` method for the type `Int`. It should return `1`. You can test it by making a new cell with the content `default(0)` and see what it returns.
+Try to, inside the above `begin` block, define a new `default` method for the type `Int`. It should return `1`. You can test it by making a new cell with the content `default(0)` and see what it returns.
 """
 
 # ╔═╡ fcaeef3f-06a7-45ed-a8d2-c295864a1fa9
@@ -375,6 +377,21 @@ There are many more differences between Python and Julia than covered here. A fe
 * [What's bad about Julia](https://viralinstruction.com/posts/badjulia/) - a more comprehensive look at all the disadvantages of Julia
 * [The unreasonable effectiveness of multiple dispatch (video)](https://www.youtube.com/watch?v=kc9HwsxE1OY) - a video on why Julia's dispatch model enables code reuse
 * Visit the [JuliaLang Slack workspace](https://julialang.org/slack/) or the [Discourse forum](discourse.julialang.org/).
+"""
+
+# ╔═╡ 00000000-0000-0000-0000-000000000001
+PLUTO_PROJECT_TOML_CONTENTS = """
+[deps]
+"""
+
+# ╔═╡ 00000000-0000-0000-0000-000000000002
+PLUTO_MANIFEST_TOML_CONTENTS = """
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.7.3"
+manifest_format = "2.0"
+
+[deps]
 """
 
 # ╔═╡ Cell order:

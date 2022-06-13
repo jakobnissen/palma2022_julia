@@ -2,11 +2,14 @@
 This is material for a short (~2 hour) introduction to Julia, intended for scientists who already code in Python.
 It highlights the most important core strenghts and weaknesses of Julia compared to Python.
 
-## How to get started - MacOS or Linux
+It assumes familiarity with the shell, and a Bash-like shell available.
+
+## How to get started
 * Clone this repository
 * Install Julia:
   - Recommended: Run `curl -fsSL https://install.julialang.org | sh`
   - Alternative: Follow instructions on www.julialang.org.
+  - Windows: Install from Windows Store.
 * In the shell, enter the directory of this git repository.
 * Launch Julia in the current environment: `julia --project=.`
 * Download and install dependencies: Run `import Pkg; Pkg.instantiate(); Pkg.precompile()`.
