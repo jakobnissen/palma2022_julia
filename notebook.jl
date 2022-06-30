@@ -29,7 +29,7 @@ The two languages have way too many differences for the notebook to show example
 md"""
 ## Weakness: Latency
 
-You've already noticed the latency - it's hard to miss.
+You've already noticed the long startup time - it's hard to miss.
 Unlike interpreted languages like Python, R and Perl, but like C and C++, Julia is _compiled_.
 Yet, it is also completely _dynamic and interactive_. How is this possible?
 
@@ -416,3 +416,5 @@ manifest_format = "2.0"
 # ╠═24e4ad19-1681-4df7-8725-217da110454a
 # ╠═00bc8f70-7ebe-464a-b229-86d11bf7041b
 # ╟─d41fc671-3809-48f2-aad6-e1353aef695f
+# ╟─00000000-0000-0000-0000-000000000001
+# ╟─00000000-0000-0000-0000-000000000002

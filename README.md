@@ -5,25 +5,13 @@ It highlights the most important core strenghts and weaknesses of Julia compared
 It assumes familiarity with the shell, and a Bash-like shell available.
 
 ## How to get started
-* Clone this repository
 * Install Julia:
-  - Recommended: Run `curl -fsSL https://install.julialang.org | sh`
-  - Alternative: Follow instructions on www.julialang.org.
-  - Windows: Install from Windows Store.
-* In the shell, enter the directory of this git repository.
-* Launch Julia in the current environment: `julia --project=.`
-* Download and install dependencies: Run `import Pkg; Pkg.instantiate(); Pkg.precompile()`.
-* Run `import Pluto; Pluto.run()` to launch Pluto.
-* Use the Pluto UI to open the `notebook.jl` file in this directory.
-
-## How to get started - Windows
+  - MacOS/Linux recommended: Run `curl -fsSL https://install.julialang.org | sh`
+  - Windows recommended: Install from Windows Store.
+  - Alternative for all platforms: Follow instructions on www.julialang.org.
 * Clone this repository
-* Install Julia from the Windows store, and launch Julia.
-* Type `;` to enter shell mode, then navigate to the directory of this git repository.
-* Type backspace to get back to Julia mode, then `]` to enter Package mode.
-* In pkg mode, run `activate .` (notice the trailing dot!) to activate this environment
-* In pkg mode, run `instantiate` to download dependencies
-* In pkg mode, run `precompile` to precompile dependencies
-* Type backspace to get back to Julia mode
+* In the shell, enter the directory of this git repository.
+* Launch Julia in the the environment of this repository: `julia --project=.`
+* Download and install dependencies: Run `import Pkg; Pkg.instantiate(); Pkg.precompile()`.
 * Run `import Pluto; Pluto.run()` to launch Pluto.
 * Use the Pluto UI to open the `notebook.jl` file in this directory.
